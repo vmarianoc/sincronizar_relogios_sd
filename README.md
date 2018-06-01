@@ -5,10 +5,10 @@ Segundo trabalho para a disciplina de Sistemas Distribuídos que consiste na uti
 A aplicação foi feita em [NodeJS](https://nodejs.org/en/).
 
 ## Organização do Repositório
-*<Em breve>*
+<Em breve>
 
 ## Implantação do Ambiente
-*<Em breve>*
+<Em breve>
 
 ## Executando a Aplicação
-*<Em breve>*
+<Em breve>
