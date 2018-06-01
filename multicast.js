@@ -4,11 +4,16 @@ const process = require("process");
 const PORTA = 5555;
 const ENDERECO_MULTICAST = "233.255.255.255";
 
-const socket = dgram.createSocket({type: "udp4", reuseAddr: true});
-socket.bind(PORTA);
 
+var socket;
 
 module.exports = {
+
+	criarSocket: function (argument) {
+		socket = dgram.createSocket({type: "udp4", reuseAddr: true});
+		socket.bind(PORTA);
+	},
+
 	//enviando mensagens
 	ouvirMensagens: function () {
 		socket.on("listening", function() {
@@ -25,10 +30,14 @@ module.exports = {
 			console.info(`Mensagem vinda de: ${informacao.address}:${informacao.port} ... ${mensagem}`);
 		});
 	},
+};
+
+var tee = function () {
+	 // console.info(`Valor de incremento: ${incremento}`);
+		console.info("TEE está aqui");
 }
 
-
-var enviarMensagen = function () {
+var enviarMensagem = function () {
 	const mensagem = Buffer.from(`Mensagem do processo: ${process.pid}`);
 	socket.send(mensagem,0,mensagem.length,PORTA,ENDERECO_MULTICAST,function() {
 		console.info(`Enviando mensagem... "${mensagem}"`);

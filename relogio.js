@@ -3,17 +3,27 @@ var incremento = 1 + Math.floor(Math.random() * 100);
 
 module.exports = {
 
-	incrementarHoraLocal: function (intervaloDeTempo) {
-		setInterval(incrementarHoraLocal,1000);
+	incrementarHoraLocal: function () {
+		setInterval(incrementar_HoraLocal,1000);
 
 		
+	},
+
+	exibirHorarioLocal: function () {
+	//	console.info();
+		console.info("***************************");
+		console.info(`Valor de incremento: ${incremento}`);
+		console.info(`Horário local: ${horaLocal}`);
+		console.info("***************************");
+		console.info();
+	
+
 	},
 
 
 };
 
-var incrementarHoraLocal = function () {
+var incrementar_HoraLocal = function () {
 	 // console.info(`Valor de incremento: ${incremento}`);
 		horaLocal +=  incremento;
-		console.info(`Horário local: ${horaLocal}`)
 }
