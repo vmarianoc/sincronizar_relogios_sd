@@ -15,10 +15,10 @@ module.exports = {
 	},
 
 	//enviando mensagens
-	ouvirMensagens: function () {
+	enviarMensagens: function () {
 		socket.on("listening", function() {
 			socket.addMembership(ENDERECO_MULTICAST);
-			setInterval(enviarMensagem, 2000); //para teste
+			setInterval(criarMensagem, 2000); //para teste
 			const endereco = socket.address();
 			console.log(`Socket UDP escutando em ${endereco.address}:${endereco.port} pid: ${process.pid} `);
 		});
@@ -32,12 +32,7 @@ module.exports = {
 	},
 };
 
-var tee = function () {
-	 // console.info(`Valor de incremento: ${incremento}`);
-		console.info("TEE está aqui");
-}
-
-var enviarMensagem = function () {
+var criarMensagem = function () {
 	const mensagem = Buffer.from(`Mensagem do processo: ${process.pid}`);
 	socket.send(mensagem,0,mensagem.length,PORTA,ENDERECO_MULTICAST,function() {
 		console.info(`Enviando mensagem... "${mensagem}"`);
