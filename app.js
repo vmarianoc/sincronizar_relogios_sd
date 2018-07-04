@@ -17,12 +17,13 @@ function exibirMenu() {
 
 function main() {
 
-	//TODO: setar identificador do processo diferente do pid?
-
 	//o relogio de cada processo será incrementado a cada 1s com um valor fixo. 
 	//Esse valor é definido randomicamente no início da aplicação.
 	processo.relogio.incrementarHoraLocal();
 	processo.setarID();
+//	multicast.criarSocket();
+//	setInterval(multicast.receberMensagens,1000);
+	//multicast.enviarID();
 
 	console.info("Olá, o que deseja fazer?");
 	exibirMenu();
@@ -42,8 +43,10 @@ function main() {
 
 		}
 		else if (tecla.name === 'return') {
+			//multicast.enviarMensagens();
+			//multicast.receberMensagens();
 			multicast.criarSocket();
-			multicast.enviarMensagens();
+			multicast.enviarID();
 			multicast.receberMensagens();
 		}
 		else {

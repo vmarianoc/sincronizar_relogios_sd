@@ -1,8 +1,7 @@
-
 var horaLocal = 0;
 var incremento = 1 + Math.floor(Math.random() * 100);
 let relogio = {
-	
+
 	incrementarHoraLocal: function () {
 		setInterval(
 			function() {

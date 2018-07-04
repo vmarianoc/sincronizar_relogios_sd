@@ -1,3 +1,4 @@
+//const process_lib = require("process");
 const relogio = require("./relogio");
 
 let processo = {
@@ -6,6 +7,7 @@ let processo = {
 	
 
 	//FIXME: garantir que os ids não se repetirem entre os processos
+	//possibilidade: multiplicar pelo pid? Lembrando que o pid será diferente em cada máquina, a não ser que consida de ser igual
 	setarID: function () {
 		this.id = 1 + Math.floor(Math.random() * 1000); 
 	},
