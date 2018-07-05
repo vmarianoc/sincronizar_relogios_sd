@@ -6,8 +6,8 @@ A aplicação foi feita em [NodeJS](https://nodejs.org/en/).
 
 ## Organização do Repositório
 -O arquivo app.js é o arquivo que contém o código principal da aplicação. 
-- O arquivo relogio.js contém o código referente as relógios da aplicação, como incremento de tempo.
-- O arquivo multcast.js controla a lib do NodeJS responsável pelas mensagens em multcast
+-O arquivo relogio.js contém o código referente as relógios da aplicação, como incremento de tempo.
+-O arquivo multcast.js controla a lib do NodeJS responsável pelas mensagens em multcast
 -O arquivo processo.js é responsável pelas operações de identificação e instanciamento de processos.
 
 
