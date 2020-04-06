@@ -47,7 +47,7 @@ let conexao = {
                             relogios[i][j] = mensagem[j];
                         }
                     }  
-                    else if(mensagem[2] == relogios[i][2]){
+                    else if(mensagem[2] == relogios[i][2] && ){
 
                     }
                     else{
@@ -95,22 +95,26 @@ var testaID = function(mensagem){
 var berkeley = function(){
     var media;
     for (var i = 0; i < relogios.length; i++){
-        
+        media = (media + (lider[1] - relogios[i][1]))/2;
     }
+    var tnovo = [];
+    tnovo[1] = lider[1] + media;
+    tnovo[0] = "TEMPO-NOVO";
+    enviaMensagem(tnovo);
 }
+
+
 
 // # receiving time from all slave nodes
 // repeat_for_all_slaves:
 //  time_at_slave_node = receive_time_at_slave()
 //  # calculating time difference
 //  time_difference = time_at_master_node - time_at_slave_node
-
 // # average time difference calculation
 // average_time_difference = sum(all_time_differences) / number_of_slaves
-
+//ok
 // synchronized_time = current_master_time + average_time_difference
-
 // # broadcasting synchronized to whole network
 // broadcast_time_to_all_slaves(synchronized_time)
-
+//If failure of master, elect a new master
 module.exports = conexao;

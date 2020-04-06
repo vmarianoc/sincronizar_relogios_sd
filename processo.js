@@ -12,8 +12,8 @@ let processo ={
     },
 
     //ID deve ser diferente de cada processo
-    setID: function(){
-        this.id = 1 + Math.floor(Math.random()* 100)
+    setID: function(number){
+        this.id = number;
     },
 
     printID: function(){

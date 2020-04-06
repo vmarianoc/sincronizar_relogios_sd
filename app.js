@@ -10,19 +10,16 @@ function Menu(){
     console.info("Aperte D - Para diminuir o Drift\n");
     console.info("Aperte H - Para o ID e o Horário\n");
     console.info("Aperte M - Exibir o Menu\n");
+    console.info("Aperte C - Criar novo Processo\n");
     console.info("Aperte qualquer tecla - Para sair da aplicação.\n\n");
-}
-
-function Berkeley(Map){
-
 }
 
 function main(){
     console.info("Bem vindo ao Sincroniza Relógio")
-    //Começa
+    //Começa o primeiro relógio
     processo.relogio.incrementaHora();
-    processo.setID();
-
+    processo.setID(1);
+    var indice = 2;
     Menu();
 
     //Leitura teclado
@@ -40,6 +37,9 @@ function main(){
             processo.relogio.aumentaDrift();
         }
         else if (opcao.name === 'd'){
+            processo.relogio.diminuiDrift();
+        }
+        else if (opcao.name === 'c'){
             processo.relogio.diminuiDrift();
         }
         else if (opcao.name === 'return'){
