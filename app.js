@@ -1,61 +1,57 @@
-const readline = require("readline");
-
-const multicast = require("./multicast");
-
+const multicast = require("./muticast");
 const processo = require("./processo");
 
-function exibirMenu() {
-	//console.info();
-	console.info("***************************");
-	console.info("Pressione 'ENTER' para começar o algoritmo de sincronização,");
-	console.info("Pressione 't' para exibir o ID do relógio e o horário local,");
-	console.info("Pressione 'm' ou 'h' para reproduzir este menu novamente,");
-	console.info("Pressione qualquer tecla para sair da aplicação.");
-	console.info("***************************");
-	console.info();
+//Import necessário para leitura
+const readline = require("readline");
+
+function Menu(){
+    console.info("\n\nAperte Enter - Para começar a sincronização\n");
+    console.info("Aperte A - Para aumentar o Drift\n");
+    console.info("Aperte D - Para diminuir o Drift\n");
+    console.info("Aperte H - Para o ID e o Horário\n");
+    console.info("Aperte M - Exibir o Menu\n");
+    console.info("Aperte qualquer tecla - Para sair da aplicação.\n\n");
 }
 
-function main() {
+function Berkeley(Map){
 
-	//o relogio de cada processo será incrementado a cada 1s com um valor fixo. 
-	//Esse valor é definido randomicamente no início da aplicação.
-	processo.relogio.incrementarHoraLocal();
-	processo.setarID();
-//	multicast.criarSocket();
-//	setInterval(multicast.receberMensagens,1000);
-	//multicast.enviarID();
-
-	console.info("Olá, o que deseja fazer?");
-	exibirMenu();
-
-
-
-	readline.emitKeypressEvents(process.stdin);
-	process.stdin.setRawMode(true);
-	process.stdin.on('keypress', (str,tecla) => {
-		if (tecla.name === 'm' || tecla.name === 'h') {
-			exibirMenu();
-		}
-		else if (tecla.name === 't') {
-			processo.imprimirID();
-			processo.relogio.exibirHorarioLocal();
-
-
-		}
-		else if (tecla.name === 'return') {
-			//multicast.enviarMensagens();
-			//multicast.receberMensagens();
-			multicast.criarSocket();
-			multicast.enviarID();
-			multicast.receberMensagens();
-		}
-		else {
-			process.exit();
-			//exit();
-		}
-	});
-		
 }
 
+function main(){
+    console.info("Bem vindo ao Sincroniza Relógio")
+    //Começa
+    processo.relogio.incrementaHora();
+    processo.setID();
+
+    Menu();
+
+    //Leitura teclado
+    readline.emitKeypressEvents(process.stdin);
+    process.stdin.setRawMode(true);
+    process.stdin.on('keypress', (str, opcao) => {
+        if(opcao.name === 'm'){
+            Menu();
+        }
+        else if (opcao.name === 'h'){
+            processo.getID();
+            processo.relogio.exibirHora();
+        }
+        else if (opcao.name === 'a'){
+            processo.relogio.aumentaDrift();
+        }
+        else if (opcao.name === 'd'){
+            processo.relogio.diminuiDrift();
+        }
+        else if (opcao.name === 'return'){
+            multicast.setSocket();
+            multicast.enviaID();
+            multicast.receiveMessage();
+        }
+        else{
+            process.exit();
+        }
+    });
+    
+}
 
 main();

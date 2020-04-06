@@ -1,54 +1,41 @@
-var horaLocal = 0;
-var incremento = 1 + Math.floor(Math.random() * 100);
+// Esse arquivo serve para definir o relógio 
+
+var hora = 0;
+var drift = 0;
+var passo = 1;
+
+
+
 let relogio = {
 
-	incrementarHoraLocal: function () {
-		setInterval(
-			function() {
-				horaLocal +=  incremento;
-			}
-		,1000);		
-	},
+    incrementaHora: function(){
+        setInterval(
+            function(){
+                hora += passo + drift;
+            }
+        ,1000
+        );
+    },
 
-	exibirHorarioLocal: function () {
-	//	console.info();
-		console.info("***************************");
-		console.info(`Valor de incremento: ${incremento}`);
-		console.info(`Horário local: ${horaLocal}`);
-		console.info("***************************");
-		console.info();
-	
+    aumentaDrift: function(){
+        drift += 1;
+        console.info(`O novo drift é de ${drift}`);
+    },
 
-	},
+    diminuiDrift: function(){
+        drift -= 1;
+        console.info(`O novo drift é de ${drift}`);
+    },
+
+    exibirHora: function(){
+        console.info(`O passo do relógio é: ${passo}`);
+        console.info(`Horário local: ${hora}`);
+    },
+    
+    atualizandoHora: function(horaRec){
+        hora = horaRec;
+    },
+    
 };
 
 module.exports = relogio;
-
-/*var horaLocal = 0;
-var incremento = 1 + Math.floor(Math.random() * 100);  
-
-module.exports = {
-
-	incrementarHoraLocal: function () {
-		setInterval(
-			function() {
-				horaLocal +=  incremento;
-			}
-		,1000);
-
-		
-	},
-
-	exibirHorarioLocal: function () {
-	//	console.info();
-		console.info("***************************");
-		console.info(`Valor de incremento: ${incremento}`);
-		console.info(`Horário local: ${horaLocal}`);
-		console.info("***************************");
-		console.info();
-	
-
-	},
-
-};
-*/
