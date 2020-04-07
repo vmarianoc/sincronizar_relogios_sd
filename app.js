@@ -15,11 +15,16 @@ function Menu(){
 }
 
 function main(){
+    var processos = [];
     console.info("Bem vindo ao Sincroniza Relógio")
     //Começa o primeiro relógio
+    //var j = processo;
+   // j.relogio.incrementaHora();
+    //j.setID(indice-1);
+    //processos.push(j);
+    //var indice = 2;
     processo.relogio.incrementaHora();
     processo.setID(1);
-    var indice = 2;
     Menu();
 
     //Leitura teclado
@@ -42,10 +47,33 @@ function main(){
         else if (opcao.name === 'c'){
             processo.relogio.diminuiDrift();
         }
+        
+        // else if (opcao.name === 'h'){
+        //         console.log(`${id}`);
+        //         console.log(`${hor}`);       
+        // }
+        // else if (opcao.name === 'a'){
+        //     for (p in processos){ 
+        //         p.relogio.aumentaDrift();
+        //     }
+        // }
+        // else if (opcao.name === 'd'){
+        //     for (p in processos){
+        //         p.relogio.diminuiDrift();
+        //     }
+        // }
+        // else if (opcao.name === 'c'){
+        //     let k = processos.relogio.incrementaHora();
+        //     k.setID(indice);
+        //     indice += 1;
+        //     processos.push(k);
+        // }
         else if (opcao.name === 'return'){
             multicast.setSocket();
-            multicast.enviaID();
-            multicast.receiveMessage();
+            console.log(`Começando o Berkeley`);
+            var berk = ["IniciaBerkeley", processo.getID(), processo.getHora(), "1"];
+            multicast.sendMessage(berk);
+            
         }
         else{
             process.exit();

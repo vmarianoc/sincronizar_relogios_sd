@@ -30,6 +30,7 @@ let relogio = {
     exibirHora: function(){
         console.info(`O passo do relógio é: ${passo}`);
         console.info(`Horário local: ${hora}`);
+        return this.hora;
     },
     
     atualizandoHora: function(horaRec){

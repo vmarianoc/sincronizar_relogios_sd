@@ -28,6 +28,11 @@ let processo ={
         return this.lider;
     },
 
+    getHora: function(){
+        return relogio.exibirHora();
+        
+    }
+
 }
 
 module.exports = processo;
